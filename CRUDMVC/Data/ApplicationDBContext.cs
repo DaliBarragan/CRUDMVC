@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CRUDMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUDMVC.Data
 {
@@ -9,6 +10,9 @@ namespace CRUDMVC.Data
                         
         }
         
-        //AGREGAR MODELOS AQUI
+        //AGREGAR MODELOS AQUI (CADA MODELO CORRESPONDE A UNA TABLA DE LA DB)
+        //AGREGARLOS SINO NO SE PUEDEN HACER MIGRACIONES
+
+        public DbSet<Contacto> Contacto { get; set; }
     }
 }

@@ -1,21 +1,25 @@
+using CRUDMVC.Data;
 using CRUDMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CRUDMVC.Controllers
 {
-    public class HomeController : Controller
+    public class InicioController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext _contexto;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILogger<InicioController> _logger;
+
+        public InicioController(ApplicationDBContext contexto)
         {
-            _logger = logger;
+            _contexto = contexto;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _contexto.Contacto.ToListAsync());
         }
 
         public IActionResult Privacy()

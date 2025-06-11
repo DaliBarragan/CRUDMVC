@@ -1,4 +1,11 @@
+using CRUDMVC.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configurar la conexion a sql ser localdb MSSQLLOCAL
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSQL")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,6 +29,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Inicio}/{action=Index}/{id?}");
 
 app.Run();
